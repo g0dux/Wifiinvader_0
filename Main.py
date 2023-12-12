@@ -95,40 +95,40 @@ class WifiInvader:
         # Criar a barra de rolagem para a caixa de texto
         self.barra_rolagem_status = ttk.Scrollbar(self.frame_saida, command=self.texto_status.yview)
         self.barra_rolagem_status.grid(row=1, column=2, sticky=tk.E)
-    
-  def iniciar_ataque(self):
-    """
-    Inicia o ataque.
-    """
 
-    # Obter o tipo de ataque
-    tipo_ataque = self.combobox_tipo_ataque.get()
+    def iniciar_ataque(self):
+        """
+        Inicia o ataque.
+        """
 
-    # Obter o SSID alvo
-    ssid_alvo = self.entrada_ssid_alvo.get()
+        # Obter o tipo de ataque
+        tipo_ataque = self.combobox_tipo_ataque.get()
 
-    # Iniciar o ataque específico
-     if tipo_ataque == TIPO_ATAQUE_BEACON:
-        # Indicar que o ataque de beacon está desativado
-        self.mostrar_status("Ataque de Beacon está desativado.")
-      elif tipo_ataque == TIPO_ATAQUE_REPLAY:
-        # Indicar que o ataque de replay está desativado
-        self.mostrar_status("Ataque de Replay está desativado.")
-      elif tipo_ataque == TIPO_ATAQUE_DATA:
-        # Indicar que o ataque de data está desativado
-        self.mostrar_status("Ataque de Data está desativado.")
+        # Obter o SSID alvo
+        ssid_alvo = self.entrada_ssid_alvo.get()
+
+        # Iniciar o ataque específico
+        if tipo_ataque == TIPO_ATAQUE_BEACON:
+            # Indicar que o ataque de beacon está desativado
+            self.mostrar_status("Ataque de Beacon está desativado.")
+        elif tipo_ataque == TIPO_ATAQUE_REPLAY:
+            # Indicar que o ataque de replay está desativado
+            self.mostrar_status("Ataque de Replay está desativado.")
+        elif tipo_ataque == TIPO_ATAQUE_DATA:
+            # Indicar que o ataque de data está desativado
+            self.mostrar_status("Ataque de Data está desativado.")
 
     def mostrar_status(self, mensagem):
-     """
-    Exibe uma mensagem no campo de status.
+        """
+        Exibe uma mensagem no campo de status.
 
-    Args:
-        mensagem: A mensagem a ser exibida.
-     """
-    self.texto_status.config(state="normal")
-    self.texto_status.insert(tk.END, mensagem + "\n")
-    self.texto_status.config(state="disabled")
-    self.texto_status.yview(tk.END)
+        Args:
+            mensagem: A mensagem a ser exibida.
+        """
+        self.texto_status.config(state="normal")
+        self.texto_status.insert(tk.END, mensagem + "\n")
+        self.texto_status.config(state="disabled")
+        self.texto_status.yview(tk.END)
 
     def obter_bssid_alvo(self):
         """
